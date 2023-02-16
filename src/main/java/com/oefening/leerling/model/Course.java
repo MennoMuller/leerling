@@ -2,11 +2,15 @@ package com.oefening.leerling.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@Data
+@NoArgsConstructor
 public class Course {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -16,40 +20,4 @@ public class Course {
     @ManyToMany
     @JsonIgnore
     private List<Student> students = new ArrayList<>();
-
-    public Course() {
-    }
-
-    public Course(String name, Integer credits) {
-        this.name = name;
-        this.credits = credits;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Integer getCredits() {
-        return credits;
-    }
-
-    public void setCredits(Integer credits) {
-        this.credits = credits;
-    }
-
-    public List<Student> getStudents() {
-        return students;
-    }
-
-    public void setStudents(List<Student> students) {
-        this.students = students;
-    }
 }
